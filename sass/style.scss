@@ -1,0 +1,104 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400&display=swap");
+
+$bp-small: 37.5em;
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+    font-family: "Poppins", sans-serif;
+    color: black;
+    font-weight: 300;
+}
+
+html {
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+    font-size: 62.5%; // 10px/16px = 62.5% -> 1rem = 10px
+}
+
+body {
+    height: 100vh;
+
+    background: #e6e5ea;
+    background: -webkit-linear-gradient(to top, #f2edff, #ebeaeb);
+    background: linear-gradient(to top, #dbd8e2, #ffffff);
+}
+
+.nav {
+    padding: 8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    width: 100vw;
+
+    &__logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 3rem;
+
+        @media only screen and (max-width: $bp-small) {
+            flex-direction: column;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        img {
+            width: 8rem;
+        }
+    }
+
+    &__form {
+        position: relative;
+        input {
+            padding-left: 2rem;
+            height: 5rem;
+            width: 30rem;
+            font-weight: 400;
+            color: gray;
+            border-radius: 100px;
+            border: 2px solid rgb(187, 187, 187);
+            transition: all 0.3s;
+
+            &::placeholder {
+                color: rgba(128, 128, 128, 0.639);
+            }
+
+            &:focus {
+                outline: none;
+                border: 2px solid gray;
+            }
+        }
+
+        button {
+            height: 4.3rem;
+            width: 4.3rem;
+            position: absolute;
+            right: 0.5rem;
+            border-radius: 100px;
+            background-color: transparent;
+            border: none;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: all 0.3s;
+
+            &:active {
+                padding-top: 5px;
+            }
+        }
+
+        .search__icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            fill: rgba(128, 128, 128, 0.639);
+        }
+    }
+}

@@ -1,0 +1,103 @@
+@import "https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400&display=swap";
+*, :before, :after {
+  box-sizing: inherit;
+  color: #000;
+  margin: 0;
+  padding: 0;
+  font-family: Poppins, sans-serif;
+  font-weight: 300;
+}
+
+html {
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  height: 100vh;
+  background: #e6e5ea;
+  background: -webkit-linear-gradient(to top, #f2edff, #ebeaeb);
+  background: linear-gradient(to top, #dbd8e2, #fff);
+}
+
+.nav {
+  width: 100vw;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  padding: 8rem;
+  display: flex;
+}
+
+.nav__logo {
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  display: flex;
+}
+
+@media only screen and (max-width: 37.5em) {
+  .nav__logo {
+    flex-direction: column;
+  }
+}
+
+.nav__logo h1 {
+  white-space: nowrap;
+  font-size: 3rem;
+  font-weight: 600;
+}
+
+.nav__logo img {
+  width: 8rem;
+}
+
+.nav__form {
+  position: relative;
+}
+
+.nav__form input {
+  height: 5rem;
+  width: 30rem;
+  color: gray;
+  border: 2px solid #bbb;
+  border-radius: 100px;
+  padding-left: 2rem;
+  font-weight: 400;
+  transition: all .3s;
+}
+
+.nav__form input::placeholder {
+  color: #808080a3;
+}
+
+.nav__form input:focus {
+  border: 2px solid gray;
+  outline: none;
+}
+
+.nav__form button {
+  height: 4.3rem;
+  width: 4.3rem;
+  background-color: #0000;
+  border: none;
+  border-radius: 100px;
+  transition: all .3s;
+  position: absolute;
+  top: 50%;
+  right: .5rem;
+  transform: translateY(-50%);
+}
+
+.nav__form button:active {
+  padding-top: 5px;
+}
+
+.nav__form .search__icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  fill: #808080a3;
+}
+
+/*# sourceMappingURL=index.3ca998d7.css.map */
