@@ -107,7 +107,7 @@ class WeatherApp {
     async getCityCoords() {
         try {
             const data = await getJSON(
-                `http://api.openweathermap.org/geo/1.0/direct?q=${this._city}&limit=5&appid=6d0850fc6b667c6f0c704ffa0c1c9eeb`
+                `https://api.openweathermap.org/geo/1.0/direct?q=${this._city}&limit=5&appid=6d0850fc6b667c6f0c704ffa0c1c9eeb`
             );
 
             let filterCity = data.filter(
