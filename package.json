@@ -11,9 +11,8 @@
     "author": "Miguel Moreno",
     "license": "ISC",
     "devDependencies": {
-        "@parcel/transformer-sass": "^2.7.0",
-        "parcel": "^2.0.0-beta.1",
-        "sass": "^1.26.10"
+        "parcel": "^2.7.0",
+        "sass": "^1.56.0"
     },
     "dependencies": {
         "regenerator-runtime": "^0.13.10"

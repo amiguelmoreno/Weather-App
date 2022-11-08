@@ -1,21 +1,38 @@
 "use strict";
 
-import { getJSON } from "./helpers";
-import loading from "url:../img/loading.svg";
-import * as clearNight from "url:/img/icons/01n.png";
-import * as clear from "url:/img/icons/01d.png";
-import * as fewClouds from "url:/img/icons/02d.png";
-import * as fewCloudsNight from "url:/img/icons/02n.png";
-import * as cloud from "url:/img/icons/06d.png";
-import * as cloudNight from "url:/img/icons/06n.png";
-import * as rain from "url:/img/icons/12d.png";
-import * as rainNight from "url:/img/icons/12n.png";
-import * as rainSun from "url:/img/icons/13d.png";
-import * as storm from "url:/img/icons/15d.png";
-import * as stormNight from "url:/img/icons/15n.png";
-import * as stormSun from "url:/img/icons/16d.png";
-import * as backgroundNight from "url:/img/night.webp";
-import * as backgroundDay from "url:/img/day.webp";
+import { getJSON } from "./helpers.js";
+
+const loading = (new Image().src = "./img/loading.svg");
+const clearNight = (new Image().src = "./img/icons/01n.png");
+const clear = (new Image().src = "./img/icons/01d.png");
+const fewClouds = (new Image().src = "./img/icons/02d.png");
+const fewCloudsNight = (new Image().src = "./img/icons/02n.png");
+const cloud = (new Image().src = "./img/icons/06d.png");
+const cloudNight = (new Image().src = "./img/icons/06n.png");
+const rain = (new Image().src = "./img/icons/12d.png");
+const rainNight = (new Image().src = "./img/icons/12n.png");
+const rainSun = (new Image().src = "./img/icons/13d.png");
+const storm = (new Image().src = "./img/icons/15d.png");
+const stormNight = (new Image().src = "./img/icons/15n.png");
+const stormSun = (new Image().src = "./img/icons/16d.png");
+const backgroundNight = (new Image().src = "./img/night.png");
+const backgroundDay = (new Image().src = "./img/day.png");
+
+/* import loading from "../img/loading.svg";
+import clearNight from "../img/icons/01n.png";
+import clear from "../img/icons/01d.png";
+import fewClouds from "../img/icons/02d.png";
+import fewCloudsNight from "../img/icons/02n.png";
+import cloud from "../img/icons/06d.png";
+import cloudNight from "../img/icons/06n.png";
+import rain from "../img/icons/12d.png";
+import rainNight from "../img/icons/12n.png";
+import rainSun from "../img/icons/13d.png";
+import storm from "../img/icons/15d.png";
+import stormNight from "../img/icons/15n.png";
+import stormSun from "../img/icons/16d.png";
+import backgroundNight from "../img/night.webp";
+import backgroundDay from "../img/day.webp"; */
 
 class WeatherApp {
     #form = document.querySelector(".nav__form");
@@ -79,6 +96,10 @@ class WeatherApp {
             this._city = searchInput.value.toLowerCase();
         }
 
+        if (this._city === "") {
+            this._city = "NO CITY WRITED";
+        }
+
         document.getElementById("search").value = "";
         this.getCityCoords();
     }
@@ -130,7 +151,7 @@ class WeatherApp {
             this._weather = data.weather[0];
             this._temp = data.main.temp - 273.15;
 
-            console.log(data);
+            //console.log(data);
 
             this.getIconSrc();
             this.generateCard();
@@ -235,7 +256,6 @@ class WeatherApp {
 
     changeDesign() {
         if (this._dayTime === "night") {
-            console.log("color changed");
             document.body.style.backgroundImage = `url(${backgroundNight})`;
         } else {
             document.body.style.backgroundImage = `url(${backgroundDay})`;

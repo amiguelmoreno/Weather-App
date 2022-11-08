@@ -30,8 +30,6 @@ export const getJSON = async function (url) {
 };
 
 function displayError(err) {
-    console.log("function fasdfa");
-
     document.querySelector(".error__message").innerHTML = `${err}`;
 
     document

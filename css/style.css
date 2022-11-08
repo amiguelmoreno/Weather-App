@@ -25,7 +25,7 @@ html {
 body {
   height: 100vh;
   width: 100vw;
-  background-image: url(../img/day.webp);
+  background-image: url(../img/day.png);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -165,7 +165,7 @@ body {
 .nav__form .search__icon {
   width: 2.5rem;
   height: 2.5rem;
-  fill: rgba(128, 128, 128, 0.639);
+  filter: opacity(40%);
 }
 
 .error__message {
