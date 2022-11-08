@@ -5,9 +5,9 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Weather App</title>
-        <link rel="stylesheet" href="./sass/style.scss" />
+        <link rel="stylesheet" href="./sass/main.scss" />
         <!-- CAMBIAR A CSS CUANDO TERMINE -->
-        <script defer type="module" src="./script.js"></script>
+        <script defer type="module" src="./js/script.js"></script>
         <link rel="shortcut icon" type="image/png" href="img/favicon.png" />
     </head>
     <body>
@@ -28,25 +28,10 @@
                         <use xlink:href="img/loupe.svg#loupe"></use>
                     </svg>
                 </button>
+                <div class="error__message">Mensaje de error de ejemplo</div>
             </form>
         </nav>
 
-        <div class="container">
-            <div class="card">
-                <div class="card__place">
-                    <p class="card__city">London</p>
-                    <span class="card__country">GB</span>
-                </div>
-                <div class="card__daytime">🌞</div>
-                <div class="card__condition">
-                    <img src="./img/cielo-nublado.png" alt="cielo" />
-                </div>
-                <div class="card__temperature">
-                    <p class="card__degrees">16</p>
-                    <span>°C</span>
-                </div>
-                <div class="card__condition-text">Nublado y lluvia</div>
-            </div>
-        </div>
+        <div class="container"></div>
     </body>
 </html>

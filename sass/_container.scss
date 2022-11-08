@@ -1,0 +1,76 @@
+.container {
+    display: flex;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+.card {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    background-color: white;
+    padding: 3rem;
+    border-radius: 10px;
+    justify-items: center;
+    align-items: center;
+    column-gap: 1rem;
+    row-gap: 1rem;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+    @media only screen and (max-width: $bp-small) {
+        width: 28rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__place {
+        grid-column: span 2;
+        display: flex;
+        margin-bottom: 1rem;
+        width: 100%;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    &__city {
+        font-size: 3.5rem;
+        font-weight: 600;
+    }
+    &__country {
+        background-color: rgb(155, 155, 155);
+        color: white;
+        padding: 0.1rem 0.3rem;
+        font-size: 1.6rem;
+        border-radius: 10px;
+        align-self: flex-start;
+    }
+
+    &__condition {
+        padding-top: 1rem;
+        img {
+            width: 10rem;
+        }
+    }
+
+    &__temperature {
+        grid-row: span 2;
+        display: flex;
+
+        span {
+            font-size: 2.5rem;
+        }
+    }
+
+    &__degrees {
+        line-height: 1;
+        font-size: 7rem;
+        font-weight: 700;
+    }
+
+    &__condition-text {
+        font-size: 1.2rem;
+        text-align: center;
+        margin-top: -1rem;
+    }
+}

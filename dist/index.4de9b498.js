@@ -142,14 +142,14 @@
       this[globalName] = mainExports;
     }
   }
-})({"2mNKm":[function(require,module,exports) {
+})({"2Rsls":[function(require,module,exports) {
 "use strict";
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "d6ea1d42532a7575";
-module.bundle.HMR_BUNDLE_ID = "b3c595598cfc62b9";
+module.bundle.HMR_BUNDLE_ID = "2751c5c64de9b498";
 /* global HMR_HOST, HMR_PORT, HMR_ENV_HASH, HMR_SECURE, chrome, browser, globalThis, __parcel__import__, __parcel__importScripts__, ServiceWorkerGlobalScope */ /*::
 import type {
   HMRAsset,
@@ -531,8 +531,347 @@ function hmrAcceptRun(bundle, id) {
     acceptedAssets[id] = true;
 }
 
-},{}],"6rimH":[function(require,module,exports) {
+},{}],"4pp4s":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+var _helpers = require("./helpers");
+var _loadingSvg = require("url:../img/loading.svg");
+var _loadingSvgDefault = parcelHelpers.interopDefault(_loadingSvg);
+var _01NPng = require("url:/img/icons/01n.png");
+var _01DPng = require("url:/img/icons/01d.png");
+var _02DPng = require("url:/img/icons/02d.png");
+var _02NPng = require("url:/img/icons/02n.png");
+var _06DPng = require("url:/img/icons/06d.png");
+var _06NPng = require("url:/img/icons/06n.png");
+var _12DPng = require("url:/img/icons/12d.png");
+var _12NPng = require("url:/img/icons/12n.png");
+var _13DPng = require("url:/img/icons/13d.png");
+var _15DPng = require("url:/img/icons/15d.png");
+var _15NPng = require("url:/img/icons/15n.png");
+var _16DPng = require("url:/img/icons/16d.png");
+var _nightWebp = require("url:/img/night.webp");
+var _dayWebp = require("url:/img/day.webp");
+"use strict";
+class WeatherApp {
+    #form = document.querySelector(".nav__form");
+    #parentEl = document.querySelector(".container");
+    _coords;
+    _country;
+    _dayTime;
+    _date;
+    _weather;
+    _temp;
+    _iconSrc;
+    constructor(){
+        this.#parentEl.innerHTML = "";
+        document.getElementById("search").focus();
+        this.addHandlerCity();
+    }
+    clear() {
+        this._city = undefined;
+        this._coords = undefined;
+        this._country = undefined;
+        this.#parentEl.innerHTML = "";
+        this._dayTime = undefined;
+        this._date = undefined;
+        this._weather = undefined;
+        this._temp = undefined;
+    }
+    loadingAnimation() {
+        const html = `
+      <div class="spinner">
+        <svg>
+          <use href="${(0, _loadingSvgDefault.default)}#icon-loader"></use>
+        </svg>
+      </div>
+    `;
+        this.#parentEl.insertAdjacentHTML("afterbegin", html);
+    }
+    addHandlerCity() {
+        this.#form.addEventListener("submit", (e)=>{
+            e.preventDefault();
+            this.clear();
+            this.loadingAnimation();
+            this.getCityName();
+        });
+    }
+    getCityName() {
+        const searchInput = document.querySelector("#search");
+        if (searchInput.value.includes(",")) {
+            this._city = searchInput.value.split(",")[0].trim().toLowerCase();
+            this._country = searchInput.value.split(",")[1].trim().toUpperCase();
+        } else this._city = searchInput.value.toLowerCase();
+        document.getElementById("search").value = "";
+        this.getCityCoords();
+    }
+    async getCityCoords() {
+        try {
+            const data = await (0, _helpers.getJSON)(`http://api.openweathermap.org/geo/1.0/direct?q=${this._city}&limit=5&appid=6d0850fc6b667c6f0c704ffa0c1c9eeb`);
+            let filterCity = data.filter((city)=>city.name.toLowerCase() == this._city || city.state?.toLowerCase() == this._city);
+            if (this._country) filterCity = filterCity.filter((el)=>el.country.toUpperCase() === this._country);
+            else this._country = filterCity[0].country;
+            if (filterCity.length === 0) throw new Error(`${"City not found \uD83C\uDF0D"}`);
+            this._coords = [
+                filterCity[0].lat,
+                filterCity[0].lon
+            ];
+            this.getCityWeather();
+        } catch (err) {
+            this.clear();
+            console.error(err);
+            throw err;
+        }
+    }
+    async getCityWeather() {
+        try {
+            const data = await (0, _helpers.getJSON)(`https://api.openweathermap.org/data/2.5/weather?lat=${this._coords[0]}&lon=${this._coords[1]}&appid=6d0850fc6b667c6f0c704ffa0c1c9eeb`);
+            this._date = new Date().toLocaleDateString("en-GB");
+            this._dayTime = data.dt >= data.sys.sunrise && data.dt <= data.sys.sunset ? "day" : "night";
+            this._weather = data.weather[0];
+            this._temp = data.main.temp - 273.15;
+            console.log(data);
+            this.getIconSrc();
+            this.generateCard();
+        } catch (err) {
+            this.clear();
+            console.error(err);
+            throw err;
+        }
+    }
+    getIconSrc() {
+        switch(this._weather.icon.slice(0, 2)){
+            case "01":
+            case "35":
+                if (this._dayTime === "day") return _01DPng;
+                else return _01NPng;
+                break;
+            case "01":
+            case "02":
+            case "03":
+            case "04":
+            case "05":
+            case "34":
+            case "35":
+            case "36":
+                if (this._dayTime === "day") return _02DPng;
+                else return _02NPng;
+                break;
+            case "06":
+            case "07":
+            case "08":
+            case "09":
+            case "11":
+            case "37":
+            case "38":
+            case "50":
+                if (this._dayTime === "day") return _06DPng;
+                else return _06NPng;
+                break;
+            case "12":
+            case "10":
+            case "18":
+            case "39":
+            case "40":
+                if (this._dayTime === "day") return _12DPng;
+                else return _12NPng;
+                break;
+            case "13":
+            case "14":
+                return _13DPng;
+            case "15":
+            case "41":
+            case "42":
+                if (this._dayTime === "day") return _15DPng;
+                else return _15NPng;
+                break;
+            case "16":
+            case "17":
+                if (this._dayTime === "day") return _16DPng;
+                break;
+            default:
+                return _02DPng;
+        }
+    }
+    generateCard() {
+        this.getIconSrc();
+        const html = `
+        <div class="card">
+            <div class="card__place">
+                <p class="card__city">${this._city[0].toUpperCase() + this._city.substring(1)}</p>
+                <span class="card__country">${this._country}</span>
+            </div>
+            <div class="card__temperature">
+            <p class="card__degrees">${this._temp.toFixed(0)}</p>
+            <span>°C</span>
+            </div>
+            <div class="card__condition">
+                <img src=${this.getIconSrc()} alt="cielo" />
+            </div>
+            <div class="card__condition-text">${this._weather.description.toUpperCase()}</div>
+        </div>      
+        `;
+        this.changeDesign();
+        this.#parentEl.innerHTML = html;
+    }
+    changeDesign() {
+        if (this._dayTime === "night") {
+            console.log("color changed");
+            document.body.style.backgroundImage = `url(${_nightWebp})`;
+        } else document.body.style.backgroundImage = `url(${_dayWebp})`;
+    }
+}
+// GEOCODING API
+// http://api.openweathermap.org/geo/1.0/direct?q=London&limit=5&appid={API key}
+// WEATHER API
+// https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
+const generateWeather = new WeatherApp();
 
-},{}]},["2mNKm","6rimH"], "6rimH", "parcelRequirebbde")
+},{"./helpers":"6s1be","url:../img/loading.svg":"k0vMH","url:/img/icons/01n.png":"vClYS","url:/img/icons/01d.png":"dQpxK","url:/img/icons/02d.png":"eF3xp","url:/img/icons/02n.png":"7N19N","url:/img/icons/06d.png":"6YFxC","url:/img/icons/06n.png":"58p5S","url:/img/icons/12d.png":"87eJv","url:/img/icons/12n.png":"dpUmw","url:/img/icons/13d.png":"3brsn","url:/img/icons/15d.png":"ffhPT","url:/img/icons/15n.png":"2qtBZ","url:/img/icons/16d.png":"gbEaA","url:/img/night.webp":"1yV9K","url:/img/day.webp":"1O0JG","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"6s1be":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "getJSON", ()=>getJSON);
+const timeout = function(s) {
+    return new Promise(function(_, reject) {
+        setTimeout(function() {
+            reject(new Error(`Request took too long! Timeout after ${s} second`));
+        }, s * 1000);
+    });
+};
+const getJSON = async function(url) {
+    try {
+        const res = await Promise.race([
+            fetch(url),
+            timeout(10)
+        ]);
+        const data = await res.json();
+        if (!res.ok) {
+            displayError("Data is not available, page fallen \uD83D\uDCA5");
+            throw new Error("Data is not available, page fallen \uD83D\uDCA5");
+        }
+        if (data.length === 0) {
+            displayError("City not found \uD83C\uDF0D");
+            throw new Error("City not found \uD83C\uDF0D");
+        }
+        return data;
+    } catch (err) {
+        throw err;
+    }
+};
+function displayError(err) {
+    console.log("function fasdfa");
+    document.querySelector(".error__message").innerHTML = `${err}`;
+    document.querySelector(".error__message").classList.add("error__message-active");
+    setTimeout(()=>document.querySelector(".error__message").classList.remove("error__message-active"), 2000);
+}
 
-//# sourceMappingURL=index.8cfc62b9.js.map
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, "__esModule", {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === "default" || key === "__esModule" || dest.hasOwnProperty(key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
+
+},{}],"k0vMH":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("3ninf") + "loading.3313ddbb.svg" + "?" + Date.now();
+
+},{"./helpers/bundle-url":"lgJ39"}],"lgJ39":[function(require,module,exports) {
+"use strict";
+var bundleURL = {};
+function getBundleURLCached(id) {
+    var value = bundleURL[id];
+    if (!value) {
+        value = getBundleURL();
+        bundleURL[id] = value;
+    }
+    return value;
+}
+function getBundleURL() {
+    try {
+        throw new Error();
+    } catch (err) {
+        var matches = ("" + err.stack).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^)\n]+/g);
+        if (matches) // The first two stack frames will be this function and getBundleURLCached.
+        // Use the 3rd one, which will be a runtime in the original bundle.
+        return getBaseURL(matches[2]);
+    }
+    return "/";
+}
+function getBaseURL(url) {
+    return ("" + url).replace(/^((?:https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/.+)\/[^/]+$/, "$1") + "/";
+} // TODO: Replace uses with `new URL(url).origin` when ie11 is no longer supported.
+function getOrigin(url) {
+    var matches = ("" + url).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^/]+/);
+    if (!matches) throw new Error("Origin not found");
+    return matches[0];
+}
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+exports.getOrigin = getOrigin;
+
+},{}],"vClYS":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("3ninf") + "01n.eacebf06.png" + "?" + Date.now();
+
+},{"./helpers/bundle-url":"lgJ39"}],"dQpxK":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("3ninf") + "01d.440de5f8.png" + "?" + Date.now();
+
+},{"./helpers/bundle-url":"lgJ39"}],"eF3xp":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("3ninf") + "02d.12fa92f1.png" + "?" + Date.now();
+
+},{"./helpers/bundle-url":"lgJ39"}],"7N19N":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("3ninf") + "02n.d48970be.png" + "?" + Date.now();
+
+},{"./helpers/bundle-url":"lgJ39"}],"6YFxC":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("3ninf") + "06d.316e3737.png" + "?" + Date.now();
+
+},{"./helpers/bundle-url":"lgJ39"}],"58p5S":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("3ninf") + "06n.17855475.png" + "?" + Date.now();
+
+},{"./helpers/bundle-url":"lgJ39"}],"87eJv":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("3ninf") + "12d.54c9f17f.png" + "?" + Date.now();
+
+},{"./helpers/bundle-url":"lgJ39"}],"dpUmw":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("3ninf") + "12n.3bd17b4f.png" + "?" + Date.now();
+
+},{"./helpers/bundle-url":"lgJ39"}],"3brsn":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("3ninf") + "13d.38b82c2a.png" + "?" + Date.now();
+
+},{"./helpers/bundle-url":"lgJ39"}],"ffhPT":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("3ninf") + "15d.f49504e3.png" + "?" + Date.now();
+
+},{"./helpers/bundle-url":"lgJ39"}],"2qtBZ":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("3ninf") + "15n.52dcb7e5.png" + "?" + Date.now();
+
+},{"./helpers/bundle-url":"lgJ39"}],"gbEaA":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("3ninf") + "16d.da753212.png" + "?" + Date.now();
+
+},{"./helpers/bundle-url":"lgJ39"}],"1yV9K":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("3ninf") + "night.f78f2e49.webp" + "?" + Date.now();
+
+},{"./helpers/bundle-url":"lgJ39"}],"1O0JG":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("3ninf") + "day.13ac6f81.webp" + "?" + Date.now();
+
+},{"./helpers/bundle-url":"lgJ39"}]},["2Rsls","4pp4s"], "4pp4s", "parcelRequirebbde")
+
+//# sourceMappingURL=index.4de9b498.js.map

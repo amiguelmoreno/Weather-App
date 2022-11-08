@@ -1,0 +1,40 @@
+.error__message {
+    top: -4rem;
+    left: -6rem;
+    color: white;
+    font-weight: 400;
+    border-radius: 10px;
+    font-size: 1.3rem;
+    padding: 0.6rem 1.2rem;
+    position: absolute;
+    background-color: rgb(248, 83, 83);
+    visibility: hidden;
+    transition: left 0.5s;
+
+    &-active {
+        left: 2rem;
+        visibility: visible;
+    }
+}
+
+.spinner {
+    margin: 5rem auto;
+    text-align: center;
+
+    svg {
+        height: 7rem;
+        width: 7rem;
+        fill: rgb(255, 255, 255);
+        animation: rotate 2s infinite linear;
+    }
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
