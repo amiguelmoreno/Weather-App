@@ -29,6 +29,9 @@
       <a href="#getting-started">Getting Started</a>
     </li>
     <li><a href="#contributing">Contributing</a></li>
+    <li>
+      <a href="#posible-extra-features-and-improvements">Posible extra features and improvements</a>
+    </li>
     <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
