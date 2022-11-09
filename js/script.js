@@ -1,6 +1,7 @@
 "use strict";
 
 import { getJSON } from "./helpers.js";
+import { API_KEY } from "./config.js";
 
 const loading = (new Image().src = "./img/loading.svg");
 const clearNight = (new Image().src = "./img/icons/01n.png");
@@ -109,7 +110,7 @@ class WeatherApp {
     async getCityCoords() {
         try {
             const data = await getJSON(
-                `https://api.openweathermap.org/geo/1.0/direct?q=${this._city}&limit=5&appid=6d0850fc6b667c6f0c704ffa0c1c9eeb`
+                `https://api.openweathermap.org/geo/1.0/direct?q=${this._city}&limit=5&appid=${API_KEY}`
             );
 
             let filterCity = data.filter(
@@ -142,7 +143,7 @@ class WeatherApp {
     async getCityWeather() {
         try {
             const data = await getJSON(
-                `https://api.openweathermap.org/data/2.5/weather?lat=${this._coords[0]}&lon=${this._coords[1]}&appid=6d0850fc6b667c6f0c704ffa0c1c9eeb`
+                `https://api.openweathermap.org/data/2.5/weather?lat=${this._coords[0]}&lon=${this._coords[1]}&appid=${API_KEY}`
             );
 
             this._date = new Date().toLocaleDateString("en-GB");
