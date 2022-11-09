@@ -101,6 +101,14 @@ Your are free to clone the repo and use it as you want! Just follow these steps 
    const API_KEY = 'ENTER YOUR API';
    ```
    
+## Posible extra features and improvements
+
+Some features I would like to add are:
+
+ * Include hour in the searched city
+ * Be able to look for more than 1 country at one time
+ * Improve the design
+ * Show a map and location of the city
 
 <!-- CONTRIBUTING -->
 ## Contributing
