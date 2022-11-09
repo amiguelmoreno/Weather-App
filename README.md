@@ -2,16 +2,18 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://amiguelmoreno.github.io/MagicHome/">
-    <img src="img/logo.png" alt="Logo" width="180">
+  <a href="https://github.com/amiguelmoreno/Weather-App">
+    <img src="img/favicon.png" alt="Logo" width="180">
   </a>
   <br />
+  <br />
+  <h1>Weather App</h1>
   <br />
   <p align="center">
     Full Responsive Landing Page build with <img src="https://img.shields.io/badge/-HTML5-orange" alt="Logo">,  <img src="https://img.shields.io/badge/-CSS3-blue" alt="Logo"> using <img src="https://img.shields.io/badge/-SASS-ff69b4" alt="Logo"> and <img src="https://img.shields.io/badge/-JS-yellow" alt="Logo">
     <br />
     <br />
-    <a href="https://amiguelmoreno.github.io/MagicHome/"><strong>Let's have a look! »</strong></a>
+    <a href="https://github.com/amiguelmoreno/Weather-App"><strong>Let's have a look! »</strong></a>
     <br />
     <br />
   </p>
