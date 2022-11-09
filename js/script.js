@@ -15,8 +15,10 @@ const rainSun = (new Image().src = "./img/icons/13d.png");
 const storm = (new Image().src = "./img/icons/15d.png");
 const stormNight = (new Image().src = "./img/icons/15n.png");
 const stormSun = (new Image().src = "./img/icons/16d.png");
-const backgroundNight = (new Image().src = "./img/night.png");
-const backgroundDay = (new Image().src = "./img/day.png");
+const backgroundNightLaptop = (new Image().src = "./img/night-laptop.png");
+const backgroundNightMobile = (new Image().src = "./img/night-mobile.png");
+const backgroundDayLaptop = (new Image().src = "./img/day-laptop.png");
+const backgroundDayMobile = (new Image().src = "./img/day-mobile.png");
 
 /* import loading from "../img/loading.svg";
 import clearNight from "../img/icons/01n.png";
@@ -255,10 +257,20 @@ class WeatherApp {
     }
 
     changeDesign() {
+        if (this._dayTime === "day") {
+            if (window.innerWidth >= 600) {
+                document.body.style.backgroundImage = `url(${backgroundDayLaptop})`;
+            } else {
+                document.body.style.backgroundImage = `url(${backgroundDayMobile})`;
+            }
+        }
+
         if (this._dayTime === "night") {
-            document.body.style.backgroundImage = `url(${backgroundNight})`;
-        } else {
-            document.body.style.backgroundImage = `url(${backgroundDay})`;
+            if (window.innerWidth >= 600) {
+                document.body.style.backgroundImage = `url(${backgroundNightLaptop})`;
+            } else {
+                document.body.style.backgroundImage = `url(${backgroundNightMobile})`;
+            }
         }
     }
 }
