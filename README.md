@@ -80,26 +80,17 @@ There are two ways of looking for the weather:
     * addEventListener()
     * insertAdjacentHTML()
     * contains()
-
-
-### What interesting components can I find?
-    
-   * PRO Navigation Bar, that converts itself into a floating menu on smaller devices
-    
-   * Testimonials Slider
-    
-   * Modal Window Form
     
 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
+Your are free to clone the repo and use it as you want! Just follow these steps and you will be ready to go:
 
-1. Get a free API Key at [https://example.com](https://example.com)
+1. Get a free API Key at https://developer.accuweather.com/accuweather-forecast-api/apis
 2. Clone the repo
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+   git clone https://github.com/amiguelmoreno/Weather-App.git
    ```
 3. Install NPM packages
    ```sh
@@ -130,14 +121,12 @@ Don't forget to give the project a star! Thanks again!
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+[![LinkedIn][linkedin-shield]][linkedin-url] 
 
-Project Link: https://amiguelmoreno.github.io/MagicHome/
+Project Link: https://github.com/amiguelmoreno/Weather-App
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/miguelmoreno00/
-[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
-[React-url]: https://reactjs.org/
