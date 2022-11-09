@@ -10,7 +10,7 @@
   <h1>Weather App</h1>
   <br />
   <p align="center">
-    Full Responsive Landing Page build with <img src="https://img.shields.io/badge/-HTML5-orange" alt="Logo">,  <img src="https://img.shields.io/badge/-CSS3-blue" alt="Logo"> using <img src="https://img.shields.io/badge/-SASS-ff69b4" alt="Logo"> and <img src="https://img.shields.io/badge/-JS-yellow" alt="Logo">
+    Full Responsive Weather App build with <img src="https://img.shields.io/badge/-HTML5-orange" alt="Logo">,  <img src="https://img.shields.io/badge/-CSS3-blue" alt="Logo"> using <img src="https://img.shields.io/badge/-SASS-ff69b4" alt="Logo"> and <img src="https://img.shields.io/badge/-JS-yellow" alt="Logo">
     <br />
     <br />
     <a href="https://github.com/amiguelmoreno/Weather-App"><strong>Let's have a look! »</strong></a>
@@ -38,9 +38,16 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-The main goal of this proyect is to use almost everything I have learnt about <img src="https://img.shields.io/badge/-HTML5-orange" alt="Logo"> and <img src="https://img.shields.io/badge/-CSS3-blue" alt="Logo"> and some <img src="https://img.shields.io/badge/-JS-yellow" alt="Logo"> fundamentals.
+The main goal of this project is to learn how an API works, manage requests and responses, handle data received and possible errors. Then, give that data some styles and display it to have a friendly use App.
 <br />
 <br />
+### How does it work?
+
+There are two ways of looking for the weather:
+  * Enter only the city name that you are looking for (ex: Madrid)
+  * Enter the city and also the country initials, separated by a comma (ex: Madrid, ES)
+<br />
+
 ### What did I used to get the best of this project?
 
   * Best Practices:
@@ -56,15 +63,19 @@ The main goal of this proyect is to use almost everything I have learnt about <i
   * <img src="https://img.shields.io/badge/-CSS3-blue" alt="Logo"> features:
     * Flexbox 
     * Grid
-    * Animations
     * Variables
     * Pseudo-elements
     * Pseudo-classes
     * Media Queries
 
-  * <img src="https://img.shields.io/badge/-JS-yellow" alt="Logo"> most used methods:
+  * <img src="https://img.shields.io/badge/-JS-yellow" alt="Logo"> most used features:
+    * ES6 Classes,
+    * filter()
+    * new Date()
+    * Promises
+    * setTimeout()
+    * export and import
     * querySelector(), querySelectorAll()
-    * toggle()
     * forEach()
     * addEventListener()
     * insertAdjacentHTML()
