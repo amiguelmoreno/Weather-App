@@ -1,4 +1,3 @@
-# Weather-App
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
