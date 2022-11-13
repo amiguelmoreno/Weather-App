@@ -11,6 +11,11 @@
   <p align="center">
     Full Responsive Weather App build with <img src="https://img.shields.io/badge/-HTML5-orange" alt="Logo">,  <img src="https://img.shields.io/badge/-CSS3-blue" alt="Logo"> using <img src="https://img.shields.io/badge/-SASS-ff69b4" alt="Logo"> and <img src="https://img.shields.io/badge/-JS-yellow" alt="Logo">
     <br />
+     <br />
+  <a href="#">
+    <img src="https://skillicons.dev/icons?i=html,css,sass,js" />
+  </a>
+  <br />
     <br />
     <a href="https://amiguelmoreno.github.io/Weather-App/"><strong>Let's have a look! »</strong></a>
     <br />
